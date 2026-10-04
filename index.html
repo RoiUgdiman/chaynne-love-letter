@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Chaynne ❤️</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins:wght@400;500;600;700&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%;font-family:Poppins,sans-serif}
+body{
+  overflow-x:hidden;
+  background:linear-gradient(135deg,#fff0f5,#ffe1eb,#fff8fb);
+  color:#5d2940;
+}
+button{font:inherit;cursor:pointer;border:0}
+.page{
+  min-height:100vh;display:none;align-items:center;justify-content:center;
+  padding:28px 18px;position:relative;overflow:hidden;
+}
+.page.active{display:flex}
+.card{
+  width:min(650px,94vw);background:rgba(255,255,255,.82);
+  backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.9);
+  border-radius:32px;padding:38px 24px;box-shadow:0 20px 60px rgba(128,45,79,.18);
+  text-align:center;position:relative;z-index:5;
+}
+h1,h2{font-family:"DM Serif Display",serif}
+h1{font-size:clamp(42px,10vw,76px);line-height:1}
+h2{font-size:clamp(32px,7vw,52px)}
+.subtitle{margin:14px auto 25px;max-width:500px;line-height:1.7}
+.sticker{
+  width:145px;height:145px;margin:0 auto 18px;border-radius:50%;
+  display:grid;place-items:center;background:#fff4f7;
+  box-shadow:0 12px 30px rgba(170,68,105,.18);
+  font-size:78px;animation:bounce 2s ease-in-out infinite;
+}
+@keyframes bounce{50%{transform:translateY(-9px) rotate(2deg)}}
+.actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:25px}
+.btn{
+  padding:14px 26px;border-radius:999px;font-weight:700;transition:.25s;
+  box-shadow:0 8px 20px rgba(130,44,78,.16)
+}
+.open{background:#e94f82;color:white}
+.nope{background:#fff;color:#a43b63;border:2px solid #ffd0df;position:relative}
+.btn:hover{transform:translateY(-3px) scale(1.03)}
+.tiny{font-size:12px;opacity:.65;margin-top:15px}
+
+#party{position:fixed;inset:0;pointer-events:none;z-index:20}
+.confetti{
+  position:absolute;top:-20px;width:9px;height:18px;border-radius:2px;
+  animation:fall linear forwards;
+}
+@keyframes fall{to{transform:translate3d(var(--x),110vh,0) rotate(720deg);opacity:.9}}
+
+.note{
+  text-align:left;background:#fffdf7;border-radius:16px;padding:28px;
+  margin-top:22px;box-shadow:0 12px 30px rgba(120,75,90,.12);
+  border:1px solid #ffe2c9;position:relative;
+}
+.note:before{
+  content:"♥";position:absolute;right:18px;top:10px;color:#ef7297;font-size:28px
+}
+.note p{line-height:1.85;margin-bottom:18px}
+.signature{text-align:right;font-weight:700;color:#d83e72}
+.done{
+  margin-top:20px;background:#d93f73;color:#fff;padding:13px 28px;border-radius:999px;
+}
+.heart{position:absolute;color:#ff88a8;opacity:.45;font-size:30px;animation:float 6s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-30px) rotate(10deg)}}
+
+.gallery{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-top:25px;
+}
+.photo{
+  aspect-ratio:1/1;object-fit:cover;width:100%;border-radius:22px;
+  box-shadow:0 12px 25px rgba(104,42,65,.18);
+  transition:.35s;
+}
+.photo:nth-child(2){transform:translateY(18px) rotate(2deg)}
+.photo:nth-child(1){transform:rotate(-2deg)}
+.photo:nth-child(3){transform:rotate(2deg)}
+.photo:hover{transform:scale(1.04) rotate(0)}
+
+.big-love{
+  margin-top:35px;font-size:clamp(40px,9vw,78px);font-family:"DM Serif Display",serif;
+  line-height:1.05;color:#d93670;text-shadow:3px 3px 0 #ffd0df;
+}
+.small-love{margin-top:10px;font-weight:600;color:#8e3c5b}
+.sparkle{font-size:25px}
+.hidden{display:none!important}
+
+@media(max-width:560px){
+ .card{padding:30px 16px;border-radius:25px}
+ .gallery{gap:7px}
+ .photo{border-radius:15px}
+ .note{padding:21px}
+}
+</style>
+</head>
+<body>
+
+<div class="heart" style="left:7%;top:12%">♥</div>
+<div class="heart" style="right:8%;top:20%;animation-delay:1s">♥</div>
+<div class="heart" style="left:12%;bottom:15%;animation-delay:2s">♥</div>
+<div class="heart" style="right:12%;bottom:10%;animation-delay:3s">♥</div>
+
+<section class="page active" id="page1">
+  <div class="card">
+    <div class="sticker">🧸❤️</div>
+    <div class="sparkle">✨ 💗 ✨</div>
+    <h1>Love Letter</h1>
+    <p class="subtitle">A tiny surprise made especially for you, Chaynne. 💌<br>
+    But first... are you brave enough to open it?</p>
+    <div class="actions">
+      <button class="btn open" onclick="openLetter()">OPEN 💗</button>
+      <button class="btn nope" id="dontOpen" onclick="moveNo()">DON'T OPEN 🙈</button>
+    </div>
+    <p class="tiny">P.S. The little button is a little stubborn. 😌</p>
+  </div>
+</section>
+
+<section class="page" id="page2">
+  <div id="party"></div>
+  <div class="card">
+    <div class="sparkle">🎉 💕 🎊 💕 🎉</div>
+    <h1>Happy Birthday!</h1>
+    <p class="subtitle">Today is all about celebrating you. ❤️</p>
+
+    <div class="note">
+      <p>
+        Happy birthday, my love! ❤️ Gusto lang gyud nako nga makabalo ka kung unsa ka ka important sa akoa.
+        I am really thankful nga naa ka sa akong life, and I am grateful for every moment nga ikaw akong kuyog.
+        When I think about us, dili lang ang big moments akong ma remember. I remember our GGX moments, our Pastilan
+        dates, watching movies together, walking around without really having a plan, going on random dates, and even
+        going to simba together. Those moments might look simple to other people, pero para sa akoa, they mean so much
+        because I got to experience them with you. Usahay gani, dili na kinahanglan nga naa tay special nga place or
+        mahal nga date. Basta ikaw akong kuyog, okay na ko. I hope someday when we look back at everything we have
+        been through, we will smile and realize nga daghan kaayo tag memories nga atong na build together. And honestly,
+        I want to keep making memories with you, not because I need something grand, but because I simply want more time with you.
+      </p>
+      <p>
+        I also want to say sorry sa mga times nga napasubo tika, na feel nimo nga gi ignore tika, or na feel nimo nga
+        dili ka special sa akoa. Sorry sa mga moments nga instead nga ma feel nimo nga loved ka, I made you question if
+        you were important to me. I know naa koy mga times nga mali gyud ko, and I cannot change those moments, but I
+        can choose to do better from now on. I want you to feel nga naa kay someone nga willing maminaw nimo, understand
+        you, and stay beside you even when things are not okay. I want to make you happy, not just with words, but with
+        the little things that show you how much I care. You have given me so many memories, so much happiness, and a
+        kind of love that I will always be thankful for. If I could choose one thing to ask for, it would be more time
+        with you. More mornings, more nights, more random conversations, more walks, more dates, more laughs, more quiet
+        moments, and more days where I get to call you mine. I do not know what the future will look like, but I know
+        that I want to keep choosing you and making you feel loved. You mean more to me than I can explain, Chaynne.
+        Thank you for staying, for loving me, and for being you. I love you so much, my love. Happy birthday. ❤️
+      </p>
+      <div class="signature">Love always, Roi ❤️</div>
+    </div>
+
+    <button class="done" onclick="showPage(3)">DONE 💕</button>
+  </div>
+</section>
+
+<section class="page" id="page3">
+  <div class="card">
+    <div class="sparkle">📸 ✨ 💗 ✨ 📸</div>
+    <h2>Our Little Memories</h2>
+    <p class="subtitle">Some of my favorite moments are simply the ones with you. 🥹❤️</p>
+
+    <div class="gallery">
+      <img class="photo" src="photo1.jpg" alt="Our memory">
+      <img class="photo" src="photo2.jpg" alt="Our memory">
+      <img class="photo" src="photo3.jpg" alt="Our memory">
+    </div>
+
+    <div class="big-love">I LOVE YOU<br>SO MUCH,<br>CHAYNNE. ❤️</div>
+    <p class="small-love">Thank you for being you. ✨</p>
+  </div>
+</section>
+
+<script>
+let noClicks = 0;
+
+function showPage(n){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page'+n).classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function moveNo(){
+  const btn=document.getElementById('dontOpen');
+  noClicks++;
+  const x=(Math.random()*260)-130;
+  const y=(Math.random()*160)-80;
+  btn.style.transform=`translate(${x}px,${y}px) rotate(${Math.random()*12-6}deg)`;
+  const messages=[
+    "Nope 😭",
+    "You can't escape the surprise 😂",
+    "Try OPEN instead 🙈",
+    "Nice try, love 😌",
+    "The button says NO but the surprise says YES 💗"
+  ];
+  btn.textContent=messages[Math.min(noClicks-1,messages.length-1)];
+}
+
+function openLetter(){
+  launchConfetti();
+  setTimeout(()=>showPage(2),650);
+}
+
+function launchConfetti(){
+  const box=document.getElementById('party');
+  box.innerHTML='';
+  const symbols=['💗','💕','✨','🎉','💖','🌸','🎀'];
+  for(let i=0;i<90;i++){
+    const c=document.createElement('span');
+    c.className='confetti';
+    c.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+    c.style.left=Math.random()*100+'vw';
+    c.style.fontSize=(12+Math.random()*18)+'px';
+    c.style.animationDuration=(2.2+Math.random()*2.8)+'s';
+    c.style.animationDelay=Math.random()*.5+'s';
+    c.style.setProperty('--x',(Math.random()*240-120)+'px');
+    box.appendChild(c);
+  }
+}
+</script>
+</body>
+</html>
